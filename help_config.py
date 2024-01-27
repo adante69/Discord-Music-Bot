@@ -7,14 +7,14 @@ class HelpCog(commands.Cog):
         self.bot = bot
 
         self.help_mes = '''
-        Список комманд Скуф бота:
-        >play - проигрывает песню в голосовом канале, также выходит из паузы
-        >queue - показывает полный плейлист 
-        >skip - пропускает текущую песню
-        >clear - останавливает музыку и очищает очередь
-        >leave - бот выходит из голосового канала
-        >pause - ставит текущую песню на паузу
-        >resume - продолжает проигрывание песни
+        List of commands:
+        >play - plays music in voice channel and add some music to a queue
+        >queue - shows you full playlist
+        >skip - skip songs
+        >clear - stop music and clear list of music from queue
+        >leave - bot leaves the voice channel
+        >pause - pause song
+        >resume - resume song
         '''
 
         self.text_channel_text = []

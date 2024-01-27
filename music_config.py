@@ -75,7 +75,7 @@ class MusicCog(commands.Cog):
                 self.vc = await self.music_queue[0][1].connect()
 
                 if self.vc is None:
-                    await ctx.send("Э бля не могу в канал зайти")
+                    await ctx.send("i cant join this channel")
                     return
             else:
                 await self.vc.move_to(self.music_queue[0][1])
@@ -87,13 +87,13 @@ class MusicCog(commands.Cog):
         else:
             self.is_playing = False
 
-    @commands.command(name='play', help='играет выбранную песню с ютуба')
+    @commands.command(name='play', help='plays music from yt')
     async def play(self,ctx,*args):
         query = ' '.join(args)
 
         voice_channel = ctx.author.voice.channel
         if voice_channel is None:
-            await ctx.send("сначала в канал зайди лошок бля")
+            await ctx.send("at first join any voice channel")
         elif self.is_paused:
             self.vc.resume()
         else:
@@ -103,9 +103,9 @@ class MusicCog(commands.Cog):
                 song = self.search_yt(self.find_vid(query))
 
             if song is True:
-                await ctx.send('не могу загрузить песню')
+                await ctx.send('i cant download the song')
             else:
-                await ctx.send('Песня добавлена в плейлист')
+                await ctx.send('song added to playlist')
                 print(song)
                 self.music_queue.append([song, voice_channel])
 
@@ -145,14 +145,14 @@ class MusicCog(commands.Cog):
         if retval != '':
             await ctx.send(retval)
         else:
-            await ctx.send("в плейлисте нет музыки")
+            await ctx.send("no more music queued")
 
     @commands.command(name='clear',help="clears")
     async def clear(self,ctx,*args):
         if self.vc != None and self.is_playing:
             self.vc.stop()
         self.music_queue = []
-        await ctx.send("плейлист пуст")
+        await ctx.send("playlist is empty")
 
     @commands.command(name='leave',help="leaves")
     async def leave(self,ctx):
