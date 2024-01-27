@@ -1,0 +1,7 @@
+json
+discord.py
+google-api-python-client
+yt-dlp
+pynacl
+asyncio
+brew install ffmpeg
